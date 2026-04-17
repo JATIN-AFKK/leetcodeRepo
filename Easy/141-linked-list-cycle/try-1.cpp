@@ -1,0 +1,34 @@
+/*
+ * Problem #141: Linked List Cycle
+ * Difficulty: Easy
+ * Submission: Try 1
+ * status: Accepted
+ * Language: cpp
+ * Date: 08/03/2025, 12:13:50
+ * Link: https://leetcode.com/problems/linked-list-cycle/
+ */
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast != nullptr && fast->next != nullptr && fast->next->next != nullptr){
+            fast = fast->next->next;
+            slow = slow->next;
+
+            if(fast == slow){
+                return true;
+            } 
+        }
+        return false;
+    }
+};
